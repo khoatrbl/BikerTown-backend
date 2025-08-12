@@ -14,13 +14,14 @@ from schemas.user_contact_create import UserContactCreate
 from schemas.user_create import UserCreate
 
 import jwt
+import os
 
 import httpx
 from jose import jwt, JWTError
 
-COGNITO_REGION = "ap-southeast-2"
-COGNITO_USERPOOL_ID = "ap-southeast-2_JgyIE87Ot"
-COGNITO_APP_CLIENT_ID = "49vvifb12b9vn6danpn4su4f2i"
+COGNITO_REGION = os.getenv('COGNITO_REGION')
+COGNITO_USERPOOL_ID = os.getenv('COGNITO_USERPOOL_ID')
+COGNITO_APP_CLIENT_ID = os.getenv('COGNITO_APP_CLIENT_ID')
 
 # this will later be in the .env variable
 JWKS_URL = f"https://cognito-idp.{COGNITO_REGION}.amazonaws.com/{COGNITO_USERPOOL_ID}/.well-known/jwks.json"

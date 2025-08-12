@@ -16,6 +16,7 @@ from schemas.user_contact_create import UserContactCreate
 from schemas.user_create import UserCreate
 from fastapi.middleware.cors import CORSMiddleware
 import utilities
+import os
 
 from utilities import verify_jwt_token
 
@@ -29,6 +30,8 @@ load_dotenv()
 origins = [
     "http://localhost",  # Local frontend (running on a different port)
     "http://localhost:5173",  # Example: React on port 3000  # Example: your production domain
+    os.getenv("ORIGIN"),
+    
 ]
 
 # Add CORSMiddleware to allow API calls from the frontend
